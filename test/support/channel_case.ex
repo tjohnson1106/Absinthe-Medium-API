@@ -25,13 +25,13 @@ defmodule MediumApiWeb.ChannelCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(MediumApi.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(MediumApi.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end
