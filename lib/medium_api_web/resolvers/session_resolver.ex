@@ -1,6 +1,10 @@
 defmodule MediumApiWeb.Resolvers.SessionResolver do
+  alias MediumApi.{Accounts, Guardian}
+  # check for user in database if registered return token and user
   def login_user(_, %{input: input}, _) do
-    # check for user in database if registered return token and user
-    {:ok, %{token: jwt_token, user: user}}
+    with {:ok, user} <- Accounts.Session.authenticate(input),
+         {:ok, jwt_token, _} <- Guardian.encode_and_sign(user) do
+      {:ok, %{token: jwt_token, user: user}}
+    end
   end
 end

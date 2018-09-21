@@ -2,7 +2,7 @@ defmodule MediumApi.Accounts.Session do
   alias MediumApi.Accounts.User
   alias MediumApi.Repo
 
-  def autheticate(args) do
+  def authenticate(args) do
     user = Repo.get_by(User, email: String.downcase(args.email))
 
     case check_password(user, args) do
