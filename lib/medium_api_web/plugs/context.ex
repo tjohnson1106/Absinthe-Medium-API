@@ -13,7 +13,7 @@ defmodule MediumApiWeb.Plugs.Context do
   defp build_context(conn) do
     with ["Bearer " <> token] <- get_req_header(conn, "authorization"),
          {:ok, user} <- MediumApi.Guardian.resource_from_claims(token) do
-      user
+      %{current_user: user}
     else
       _ -> %{}
     end
