@@ -17,6 +17,6 @@ defmodule MediumApiWeb.Schema.Middleware.Authorize do
   end
 
   defp correct_role?(%{}, :any), do: true
-  defp correct_role?(%{role: role}, :role), do: true
+  defp correct_role?(%{role: role}, role), do: true
   defp correct_role?(_, _), do: false
 end
