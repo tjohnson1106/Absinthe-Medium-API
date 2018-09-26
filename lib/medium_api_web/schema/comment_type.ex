@@ -5,6 +5,7 @@ defmodule MediumApiWeb.Schema.Types.CommentType do
   object :comment_type do
     field(:id, :id)
     field(:content, :string)
+    field(:user, :user_type, resolve: assoc(:user))
     field(:post, :post_type, resolve: assoc(:post))
   end
 
