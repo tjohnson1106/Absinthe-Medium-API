@@ -3,6 +3,8 @@ defmodule MediumApiWeb.Schema.Types do
 
   alias MediumApiWeb.Schema.Types
 
-  import_types(Types.Usertype)
+  import_types(Types.UserType)
   import_types(Types.SessionType)
+  import_types(Types.PostType)
+  import_types(Types.CommentType)
 end
