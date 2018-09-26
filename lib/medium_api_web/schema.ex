@@ -32,6 +32,7 @@ defmodule MediumApiWeb.Schema do
     @desc "Create a post"
     field :create_post, type: :post_type do
       arg(:input, non_null(:post_input_type))
+      middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.PostResolver.create_post/3)
     end
   end
